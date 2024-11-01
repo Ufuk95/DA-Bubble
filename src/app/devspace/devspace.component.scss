@@ -1,0 +1,90 @@
+@import '../../styles.scss';
+
+.devspaceContainer {
+    background-color: white;
+    max-width: 366px;
+    width: 100%;
+    min-height: 750px;
+    max-height: 940px;
+
+    border: 1px solid black;
+    border-radius: 30px;
+    position: relative;
+    left: 30px;
+    top: 115px;
+
+    padding-top: 32px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 32px;
+
+
+    .headline {
+        @include dFlex($jc: space-between, $ai:center);
+
+        div {
+            @include dFlex($jc: space-evenly, $ai:center, $g: 15px);
+
+            span {
+                font-size: 24px;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+
+.workspaces {
+    content: url('/img/Devspace/workspaces.svg');
+}
+
+.channels {
+    margin-top: 35px;
+
+    .channelsHeadline {
+        @include dFlex($jc: space-between, $ai:center);
+
+        >div {
+            @include dFlex($jc: center, $ai:center, $g: 25px);
+            height: 40px;
+            cursor: pointer;
+
+            &:hover {
+                color: rgba(83, 90, 241, 1);
+                 
+                .workspaces {
+                    content: url('/img/Devspace/workspaces_blue.svg');
+                }
+
+                .accountCircle {
+                    content: url('/img/Devspace/account_circle_blue.svg');
+                }
+            }
+
+            >div {
+                @include dFlex($jc: center, $ai:center, $g: 15px);
+                font-size: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.channelsInput {
+    padding-left: 25px;
+    max-width: 306px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+ul {
+    margin-top: 25px;
+}
+
+.pointer {
+    cursor: pointer;
+    
+}
