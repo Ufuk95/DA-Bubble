@@ -5,19 +5,21 @@ import { CommonModule } from '@angular/common';
 import { ALL_USERS } from '../shared/devspace/ALL_USERS';
 import { ALL_CHANNELS } from '../shared/devspace/ALL_CHANNELS';
 import { ChannelComponent } from "./channel/channel.component";
+import { ChatComponent } from "./chat/chat.component";
 
 
 
 @Component({
   selector: 'app-devspace',
   standalone: true,
-  imports: [CommonModule, UserComponent, ChannelComponent],
+  imports: [CommonModule, UserComponent, ChannelComponent, ChatComponent],
   templateUrl: './devspace.component.html',
   styleUrl: './devspace.component.scss'
 })
 export class DevspaceComponent {
 
   @Output() newChannelClicked: EventEmitter<boolean> = new EventEmitter();
+  @Output() userSelected: EventEmitter<string> = new EventEmitter<string>();
 
   isHovered: boolean = false;
   isAddHovered: boolean = false
@@ -29,6 +31,7 @@ export class DevspaceComponent {
 
   channels = ALL_CHANNELS;
   users = ALL_USERS;
+
 
   getUserImageSource(): string {
     if (!this.isUsersListVisible && this.isUserHovered) {
@@ -54,9 +57,11 @@ export class DevspaceComponent {
     }
   }
 
+
   onSelectedUser(id: string) {
-    console.log('Ausgewählter Benutzer:', id);
+    this.userSelected.emit(id);
   }
+
 
   toggleUsersList() {
     this.isUsersListVisible = !this.isUsersListVisible;
