@@ -11,6 +11,10 @@ export class ChannelComponent {
 
   // @Input({ required: true }) id!: string;
   @Input({ required: true }) name!: string;
-  @Output() select = new EventEmitter();
+  @Output() selectChannel = new EventEmitter();
 
+
+  onSelectChannel() {
+    this.selectChannel.emit(this.name);
+  }
 }

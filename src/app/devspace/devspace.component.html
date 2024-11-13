@@ -26,7 +26,7 @@
 
         <div class="channelsInput" *ngIf="isChannelsListVisible">
             @for (channel of channels; track channel.name) {
-            <app-channel [name]="channel.name" />
+            <app-channel [name]="channel.name" (selectChannel)="onSelectedChannel($event)" />
             }
 
         </div>
@@ -52,4 +52,14 @@
 
         </div>
     </div>
+</div>
+
+<div>
+    @for (user of users; track user.id) {}
+    <app-chat [name]="selectedUser.name" />
+</div>
+
+<div>
+    @for (channel of channels; track channel.name) {}
+    <app-chat [name]="selectedChannel.name" />
 </div>

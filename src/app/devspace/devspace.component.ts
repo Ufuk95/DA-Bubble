@@ -19,7 +19,7 @@ import { ChatComponent } from "./chat/chat.component";
 export class DevspaceComponent {
 
   @Output() newChannelClicked: EventEmitter<boolean> = new EventEmitter();
-  @Output() userSelected: EventEmitter<string> = new EventEmitter<string>();
+  // @Output() userSelected: EventEmitter<string> = new EventEmitter<string>();
 
   isHovered: boolean = false;
   isAddHovered: boolean = false
@@ -31,6 +31,25 @@ export class DevspaceComponent {
 
   channels = ALL_CHANNELS;
   users = ALL_USERS;
+
+  selectedUserId = "u1";
+  selectedChannelName = "Entwicklerteam";
+
+  get selectedChannel() {
+    return this.channels.find((channel) => channel.name === this.selectedChannelName)!;
+  }
+
+  get selectedUser() {
+    return this.users.find((user) => user.id === this.selectedUserId)!;
+  }
+
+  onSelectedUser(id: string) {
+    this.selectedUserId = id;
+  }
+
+  onSelectedChannel(name: string) {
+    this.selectedChannelName = name
+  }
 
 
   getUserImageSource(): string {
@@ -58,9 +77,7 @@ export class DevspaceComponent {
   }
 
 
-  onSelectedUser(id: string) {
-    this.userSelected.emit(id);
-  }
+ 
 
 
   toggleUsersList() {

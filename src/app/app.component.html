@@ -2,22 +2,9 @@
 
 
 
+<app-devspace (newChannelClicked)="handleNewChannelClicked($event)" />
 
 
-
-<div class="fullBody">
-    <div>
-        <app-devspace (newChannelClicked)="handleNewChannelClicked($event)" (userSelected)="handleUserSelected($event)"/>
-
-
-        @if (isNewChannelClicked) {
-            <app-new-channel class="newChannel"  (closeChannelEvent)="handleNewChannelClosed()"/>
-        }
-    </div>
-
-    <div>
-        @for (user of users; track user.id) {}
-        <app-chat [name]="selectedUser.name" />
-    </div>
-    
-</div>
+@if (isNewChannelClicked) {
+<app-new-channel class="newChannel" (closeChannelEvent)="handleNewChannelClosed()" />
+}
