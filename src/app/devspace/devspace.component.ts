@@ -29,6 +29,9 @@ export class DevspaceComponent {
   isUsersListVisible: boolean = true;
   isChannelsListVisible: boolean = true;
 
+  showUsers: boolean = false;
+  showChannels: boolean = true;
+
   channels = ALL_CHANNELS;
   users = ALL_USERS;
 
@@ -45,10 +48,16 @@ export class DevspaceComponent {
 
   onSelectedUser(id: string) {
     this.selectedUserId = id;
+
+    this.showChannels = false; // Kanäle ausblenden, wenn ein Benutzer ausgewählt wird
+    this.showUsers = true;
   }
 
   onSelectedChannel(name: string) {
-    this.selectedChannelName = name
+    this.selectedChannelName = name;
+
+    this.showUsers = false; // Benutzer ausblenden, wenn ein Kanal ausgewählt wird
+    this.showChannels = true;
   }
 
 

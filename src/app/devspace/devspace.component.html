@@ -11,7 +11,8 @@
 
     <div class="channels">
         <div class="channelsHeadline">
-            <div (click)="toggleChannelsList()" (mouseenter)="isChannelHovered = true" (mouseleave)="isChannelHovered = false">
+            <div (click)="toggleChannelsList()" (mouseenter)="isChannelHovered = true"
+                (mouseleave)="isChannelHovered = false">
                 <img class="arrowDownBlack" alt="arrow down" [src]="getChannelImageSource()">
                 <div>
                     <img class="workspaces" alt="some circles">
@@ -34,8 +35,7 @@
         <div class="userChat">
             <div class="channelsHeadline" (mouseenter)="isUserHovered = true" (mouseleave)="isUserHovered = false">
                 <div (click)="toggleUsersList()">
-                    <img class="arrowDownBlack" alt="arrow down" 
-                    [src]="getUserImageSource()">
+                    <img class="arrowDownBlack" alt="arrow down" [src]="getUserImageSource()">
 
                     <div>
                         <img class="accountCircle" src="/img/Devspace/account_circle.svg" alt="some circles">
@@ -55,11 +55,13 @@
 </div>
 
 <div>
+    @if (showUsers) {
     @for (user of users; track user.id) {}
     <app-chat [name]="selectedUser.name" />
-</div>
+    }
 
-<div>
+    @if (showChannels) {
     @for (channel of channels; track channel.name) {}
     <app-chat [name]="selectedChannel.name" />
+    }
 </div>
